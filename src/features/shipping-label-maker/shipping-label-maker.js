@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../../core/components/header/header';
 import Wizard from '../../core/components/wizard/wizard';
 
 export class ShippingLabelMaker extends Component {
@@ -6,7 +7,25 @@ export class ShippingLabelMaker extends Component {
     super(props)
   
     this.state = {
-       currStep: 1
+       currStep: 1,
+       ShippingInfo: {
+        from: {
+          name: '',
+          street: '',
+          city: '',
+          state: '',
+          zip: ''
+        },
+        to: {
+          name: '',
+          street: '',
+          city: '',
+          state: '',
+          zip: ''
+        },
+        weight: null,
+        shippingOption: null
+      }
     }
   }
 
@@ -22,11 +41,14 @@ export class ShippingLabelMaker extends Component {
   
   render() {
     return (
-      <Wizard
-        wizardContext={this.state}
-        goforward={this.goForward}
-        goback={this.goBack}
-      />
+      <React.Fragment>
+        <Header />
+        <Wizard
+          wizardContext={this.state}
+          goforward={this.goForward}
+          goback={this.goBack}
+        />
+      </React.Fragment>
     )
   }
 }
