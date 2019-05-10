@@ -1,12 +1,13 @@
 import React from 'react';
 import './app.css';
+import ShippingLabelMaker from './features/shipping-label-maker/shipping-label-maker';
 
-function app() {
+function App() {
   return (
     <div className="app">
-      app...
+      <ShippingLabelMaker />
     </div>
   );
 }
 
-export default app;
+export default App;
