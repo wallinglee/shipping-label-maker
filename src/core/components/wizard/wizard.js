@@ -1,55 +1,50 @@
 import React, { Component } from 'react';
-import GetSenderAddress from '../../../features/shipping-label-maker/get-sender-address';
-import GetReceiverAddress from '../../../features/shipping-label-maker/get-receiver-address';
-import GetWeight from '../../../features/shipping-label-maker/get-weight';
-import GetShippingOption from '../../../features/shipping-label-maker/get-shipping-option';
-import Confirm from '../../../features/shipping-label-maker/confirm';
+import PropTypes from 'prop-types';
+import Steps from '../../../features/shipping-label-maker/steps';
 
 export class Wizard extends Component {
-    render() {
-        const { wizardContext, goforward, goback } = this.props;
-        console.log('Wizard - render - wizardContext: ', wizardContext);
     
-        switch (wizardContext.currStep) {
-          case 1:
-            return (
-              <GetSenderAddress
-                goforward={goforward}
-                goback={goback}
-              />
-            );
-          case 2:
-            return (
-              <GetReceiverAddress
-                goforward={goforward}
-                goback={goback}
-              />
-            );
-          case 3:
-            return (
-              <GetWeight
-                goforward={goforward}
-                goback={goback}
-              />
-            );
-          case 4:
-            return (
-              <GetShippingOption
-                goforward={goforward}
-                goback={goback}
-              />
-            );
-          case 5:
-            return (
-              <Confirm
-                goforward={goforward}
-                goback={goback}
-              />
-            );
-          default:
-            return null
+    // Button click action
+    onAction = (which) => {
+        const WizardAction = { prev: 1, next: 2, end: 3};
+        console.log('onAction - which:', which + ': ' + WizardAction[which]);
+        console.log('onAction - props: ', this.props);
+        switch (which) {
+            case 'prev':
+                this.props.goback();
+                break;
+            case 'next':
+                this.props.goforward();
+                break;
+            case 'end':
+                this.props.onComplete();
+                break;
+            default:
+                //
+                break;
         }
+    };
+    
+    render() {
+        console.log('Wizard - props: ', this.props);
+        return (
+            <React.Fragment>
+                {this.props.header()}
+                <Steps
+                    wizardContext={this.props.wizardContext}
+                    onAction={this.onAction}
+                    handleInputChange={this.props.handleInputChange}
+                />
+            </React.Fragment>
+        )
       }
 }
+
+Wizard.propTypes = {
+  header: PropTypes.func.isRequired,
+  steps: PropTypes.array.isRequired,
+  wizardContext: PropTypes.object.isRequired,
+  onComplete: PropTypes.func.isRequired
+};
 
 export default Wizard;

@@ -25,7 +25,8 @@ export class ShippingLabelMaker extends Component {
         },
         weight: null,
         shippingOption: null
-      }
+      },
+      steps: ['GetSenderAddress', 'GetReceiverAddress', 'GetWeight', 'GetShippingOption', 'Confirm']
     }
   }
 
@@ -38,15 +39,39 @@ export class ShippingLabelMaker extends Component {
   goBack = () => {
     this.setState({currStep: this.state.currStep - 1});
   };
+
+  // Update state from user input
+  handleInputChange = (marker, property, val) => {
+    console.log('marker: ', marker);
+    console.log('property: ', property);
+    console.log('val: ', val);
+    
+    let ShippingInfo = {...this.state.ShippingInfo};
+    ShippingInfo[marker][property] = val;
+    this.setState({ShippingInfo});
+  };
+
+  // Header function
+  header = () => {
+    return <Header title="Shipping Label Maker" progress={this.state.currStep / this.state.steps.length} />;
+  };
+
+  // Executes when shipping label is ready
+  onComplete = () => {
+    alert('onComplete');
+  };
   
   render() {
     return (
       <React.Fragment>
-        <Header />
         <Wizard
+          header={this.header}
+          steps={this.state.steps}
           wizardContext={this.state}
+          onComplete={this.onComplete}
           goforward={this.goForward}
           goback={this.goBack}
+          handleInputChange={this.handleInputChange}
         />
       </React.Fragment>
     )

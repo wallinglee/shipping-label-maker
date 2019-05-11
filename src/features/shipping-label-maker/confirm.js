@@ -3,13 +3,15 @@ import '../../css/step.css';
 
 export class Confirm extends Component {
   render() {
-    //console.log('props: ', this.props);
+    console.log('Confirm - props: ', this.props);
+    const { values, onAction } = this.props;
+    
     return (
       <div className="step row">
         <div className="col">
           <h3>Confirm the shipping info:</h3>
-          <button onClick={this.props.goback}>Back</button>
-          <button onClick={this.props.goforward}>Next</button>
+          <button onClick={()=>{onAction('prev')}}>Back</button>
+          <button onClick={()=>{onAction('end')}}>End</button>
         </div>
       </div>
     )

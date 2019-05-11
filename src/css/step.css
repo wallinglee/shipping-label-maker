@@ -1,3 +1,7 @@
 .step {
   background-color: yellow;
 }
+
+.step .col-form-label {
+  padding-right: 0;
+}
