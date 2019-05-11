@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import Buttons from '../../core/components/buttons/buttons';
 import '../../css/step.css';
 
 export class GetSenderAddress extends Component {
   render() {
-    console.log('GetSenderAddress - props: ', this.props);
-    const { values, onAction, handleInputChange } = this.props;
+    const { values, onAction, handleInputChange, currStep } = this.props;
     const marker = 'from';
     
     return (
       <div className="step row">
         <div className="col">
-          <h3>Enter the sender's address:</h3>
+          <h4>Enter the sender's address:</h4>
           <form>
             <div className="form-group row">
               <label htmlFor="sendername" className="col-sm-1 col-form-label text-right">Name:</label>
@@ -69,7 +69,7 @@ export class GetSenderAddress extends Component {
               </div>
             </div>
           </form>
-          <button onClick={()=>{onAction('next')}}>Next</button>
+          <Buttons onAction={onAction} currStep={currStep} />
         </div>
       </div>
     )

@@ -1,7 +1,65 @@
 .step {
-  background-color: yellow;
+  background-color: transparent;
 }
 
-.step .col-form-label {
+.step h4 {
+  margin-bottom: 1.5rem;
+}
+
+.step .col form {
+  min-height: 150px;
+}
+
+.step .col .button-row {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.step .col .button-row button {
+  margin: 0 .25rem;
+}
+
+.step .col-form-label.text-right {
   padding-right: 0;
+}
+
+.step .col-form-label.text-left {
+  padding-left: 0;
+}
+
+.step input[type=number] {
+  padding-right: 0;
+}
+
+.step .col .form-check {
+  min-height: 150px;
+  padding-left: 2.5rem;
+}
+
+.step .col .form-check label {
+  text-transform: capitalize;
+}
+
+.step .col .form-check .shipping-cost {
+  margin-left: -20px;
+  margin-top: 20px;
+}
+
+.step .col .confirm-shipping {
+  min-height: 150px;
+  padding-left: 20px;
+  padding-bottom: 1.5rem;
+}
+
+.step .col .confirm-shipping .row .col h6 {
+  margin-bottom: .25rem;
+  margin-top: 1rem;
+}
+
+.step .col .confirm-shipping .row .col h6:nth-child(1) {
+  margin-top: 0;
+}
+
+.step .col .confirm-shipping .row .col .option-name {
+  text-transform: capitalize;
 }

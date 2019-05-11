@@ -9,9 +9,8 @@ import '../../css/step.css';
 
 export class Steps extends Component {
   render() {
-    console.log('Steps - props: ', this.props);
     const { wizardContext, onAction, handleInputChange } = this.props;
-    let currStep = this.props.wizardContext.currStep;
+    let currStep = wizardContext.currStep;
 
     switch (currStep) {
         case 1:
@@ -20,6 +19,7 @@ export class Steps extends Component {
                     values={wizardContext.ShippingInfo.from}
                     onAction={onAction}
                     handleInputChange={handleInputChange}
+                    currStep={currStep}
                 />
             );
         case 2:
@@ -28,6 +28,7 @@ export class Steps extends Component {
                     values={wizardContext.ShippingInfo.to}
                     onAction={onAction}
                     handleInputChange={handleInputChange}
+                    currStep={currStep}
                 />
             );
         case 3:
@@ -35,19 +36,26 @@ export class Steps extends Component {
                 <GetWeight
                     values={wizardContext.ShippingInfo.weight}
                     onAction={onAction}
+                    handleInputChange={handleInputChange}
+                    currStep={currStep}
                 />
             );
         case 4:
             return (
                 <GetShippingOption
-                    values={wizardContext.ShippingInfo.shippingOption}
+                    shippingOption={wizardContext.ShippingInfo.shippingOption}
+                    weight={wizardContext.ShippingInfo.weight}
                     onAction={onAction}
+                    handleInputChange={handleInputChange}
+                    currStep={currStep}
                 />
             );
         case 5:
             return (
                 <Confirm
+                    wizardContext={wizardContext}
                     onAction={onAction}
+                    currStep={currStep}
                 />
             );
         default:

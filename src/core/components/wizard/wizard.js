@@ -6,9 +6,7 @@ export class Wizard extends Component {
     
     // Button click action
     onAction = (which) => {
-        const WizardAction = { prev: 1, next: 2, end: 3};
-        console.log('onAction - which:', which + ': ' + WizardAction[which]);
-        console.log('onAction - props: ', this.props);
+        //const WizardAction = { prev: 1, next: 2, end: 3};
         switch (which) {
             case 'prev':
                 this.props.goback();
@@ -26,7 +24,6 @@ export class Wizard extends Component {
     };
     
     render() {
-        console.log('Wizard - props: ', this.props);
         return (
             <React.Fragment>
                 {this.props.header()}

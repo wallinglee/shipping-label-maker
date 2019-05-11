@@ -5,7 +5,6 @@ import '../../../css/header.css';
  * Header component
  */
 const Header = (props) => {
-  //console.log('Header - props', props);
   return (
     <div className="header row">
         <div className="col">

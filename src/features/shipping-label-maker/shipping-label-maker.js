@@ -23,8 +23,8 @@ export class ShippingLabelMaker extends Component {
           state: '',
           zip: ''
         },
-        weight: null,
-        shippingOption: null
+        weight: 0,
+        shippingOption: 1
       },
       steps: ['GetSenderAddress', 'GetReceiverAddress', 'GetWeight', 'GetShippingOption', 'Confirm']
     }
@@ -42,12 +42,13 @@ export class ShippingLabelMaker extends Component {
 
   // Update state from user input
   handleInputChange = (marker, property, val) => {
-    console.log('marker: ', marker);
-    console.log('property: ', property);
-    console.log('val: ', val);
-    
     let ShippingInfo = {...this.state.ShippingInfo};
-    ShippingInfo[marker][property] = val;
+    if(marker) {
+      ShippingInfo[marker][property] = val;
+    } else {
+      ShippingInfo[property] = Number(val);
+    }
+    
     this.setState({ShippingInfo});
   };
 
