@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Header from '../../core/components/header/header';
 import Wizard from '../../core/components/wizard/wizard';
+import ShippingLabel from './shipping-label';
 
 export class ShippingLabelMaker extends Component {
   constructor(props) {
     super(props)
   
     this.state = {
-       currStep: 1,
-       ShippingInfo: {
+      currStep: 1,
+      ShippingInfo: {
         from: {
           name: '',
           street: '',
@@ -26,7 +27,8 @@ export class ShippingLabelMaker extends Component {
         weight: 0,
         shippingOption: 1
       },
-      steps: ['GetSenderAddress', 'GetReceiverAddress', 'GetWeight', 'GetShippingOption', 'Confirm']
+      steps: ['GetSenderAddress', 'GetReceiverAddress', 'GetWeight', 'GetShippingOption', 'Confirm'],
+      isComplete: false
     }
   }
 
@@ -59,21 +61,25 @@ export class ShippingLabelMaker extends Component {
 
   // Executes when shipping label is ready
   onComplete = () => {
-    alert('onComplete');
+    this.setState({isComplete: true});
   };
   
   render() {
     return (
       <React.Fragment>
-        <Wizard
-          header={this.header}
-          steps={this.state.steps}
-          wizardContext={this.state}
-          onComplete={this.onComplete}
-          goforward={this.goForward}
-          goback={this.goBack}
-          handleInputChange={this.handleInputChange}
-        />
+        {this.state.isComplete ? (
+          <ShippingLabel wizardContext={this.state.ShippingInfo} />
+        ) : (
+          <Wizard
+            header={this.header}
+            steps={this.state.steps}
+            wizardContext={this.state}
+            onComplete={this.onComplete}
+            goforward={this.goForward}
+            goback={this.goBack}
+            handleInputChange={this.handleInputChange}
+          />
+        )}
       </React.Fragment>
     )
   }

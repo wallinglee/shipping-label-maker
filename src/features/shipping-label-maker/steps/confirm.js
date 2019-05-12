@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Buttons from '../../core/components/buttons/buttons';
-import '../../css/step.css';
+import Buttons from '../../../core/components/buttons/buttons';
+import '../../../css/step.css';
 
 export class Confirm extends Component {
   render() {

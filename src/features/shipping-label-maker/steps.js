@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import GetSenderAddress from './get-sender-address';
-import GetReceiverAddress from './get-receiver-address';
-import GetWeight from './get-weight';
-import GetShippingOption from './get-shipping-option';
-import Confirm from './confirm';
+import GetSenderAddress from './steps/get-sender-address';
+import GetReceiverAddress from './steps/get-receiver-address';
+import GetWeight from './steps/get-weight';
+import GetShippingOption from './steps/get-shipping-option';
+import Confirm from './steps/confirm';
 import '../../css/step.css';
 
 export class Steps extends Component {

@@ -13,14 +13,8 @@ const Buttons = (props) => {
             <button className="btn btn-primary" type="button" onClick={()=>{props.onAction('next')}}>Next</button>
         }
         {props.currStep === 5 &&
-            <button className="btn btn-primary" type="button" onClick={()=>{props.onAction('end')}}>End</button>
+            <button className="btn btn-primary" type="button" onClick={()=>{props.onAction('end')}}>Complete</button>
         }
-
-        {/*
-        <button onClick={()=>{
-            values > 0 ? onAction('next') : alert('Please enter a weight')
-        }}>Next</button>
-        */}
     </div>
   )
 };
